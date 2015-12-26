@@ -1,0 +1,25 @@
+{
+  "name": "koa-joi-schema",
+  "version": "0.1.0",
+  "description": "Koa middleware to validate input/output using Joi.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simplyianm/koa-joi-schema.git"
+  },
+  "keywords": [
+    "koa",
+    "joi",
+    "schema",
+    "validation"
+  ],
+  "author": "Ian Macalinao <me@ian.pw>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simplyianm/koa-joi-schema/issues"
+  },
+  "homepage": "https://github.com/simplyianm/koa-joi-schema#readme"
+}
