@@ -19,19 +19,20 @@ const validator = validate('request.body')(Joi.object().keys({
   password: Joi.string()..regex(/^[a-zA-Z0-9]{3,30}$/).required()
 }))
 
-const errorHandler = (ctx, next) => {
-  if (ctx.joiError) { // Joi error object
+const validationErrorHandler = (ctx, next) => {
+  try {
+    yield next()
+  } catch (e) {
+    if (e.name !== 'ValidationError') throw e
     ctx.status = 400 // invalid input
     ctx.body = {
       error: 'Invalid input',
-      reason: ctx.joiError
+      reason: e
     }
-    return
   }
-  yield next()
 }
 
-router.post('/users', bodyParser, validator, errorHandler, usersCtrl.create)
+router.post('/users', bodyParser, validationErrorHandler, validator, usersCtrl.create)
 ```
 
 ## License
