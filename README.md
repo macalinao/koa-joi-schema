@@ -23,7 +23,8 @@ const validationErrorHandler = (ctx, next) => {
   try {
     yield next()
   } catch (e) {
-    if (e.name !== 'ValidationError') throw e
+    // Duck type the Joi error
+    if (e.name !== 'ValidationError' && !Array.isArray(e.details)) throw e
     ctx.status = 400 // invalid input
     ctx.body = {
       error: 'Invalid input',
