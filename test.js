@@ -2,7 +2,6 @@ const co = require('co')
 const expect = require('chai').expect
 const validate = require('.')
 const Joi = validate.Joi
-const JoiError = validate.JoiError
 
 const next = () => Promise.resolve(true)
 
@@ -19,7 +18,6 @@ describe('koa-joi-schema', () => {
     }))
     return co(function *() {
       yield validator(ctx, next)
-      expect(ctx.joiError).to.be.undefined
     })
   })
 
@@ -50,8 +48,7 @@ describe('koa-joi-schema', () => {
     try {
       yield validator(ctx, next)
     } catch (e) {
-      expect(e).to.be.an.instanceof(JoiError)
-      expect(e.name).to.equal('ValidationError')
+      expect(e.name).to.equal('JoiValidationError')
       expect(e.details.length).to.equal(1)
       expect(e.details[0].path).to.equal('name')
     }
