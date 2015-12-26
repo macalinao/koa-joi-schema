@@ -10,6 +10,7 @@ See [test.js](test.js) for more examples.
 
 ```javascript
 const validate = require('koa-joi-schema')
+const Joi = validate.Joi // prevent version mismatch
 
 const validator = validate('body')(Joi.object().keys({
   username: Joi.string().email().required(),
