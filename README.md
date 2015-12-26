@@ -12,7 +12,9 @@ See [test.js](test.js) for more examples.
 const validate = require('koa-joi-schema')
 const Joi = validate.Joi // prevent version mismatch
 
-const validator = validate('body')(Joi.object().keys({
+// Creates a validator for 'ctx.request.body'.
+// Use dot notation to validate anything on the context.
+const validator = validate('request.body')(Joi.object().keys({
   username: Joi.string().email().required(),
   password: Joi.string()..regex(/^[a-zA-Z0-9]{3,30}$/).required()
 }))
