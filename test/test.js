@@ -1,6 +1,6 @@
 const co = require('co')
 const expect = require('chai').expect
-const validate = require('.')
+const validate = require('..')
 const Joi = validate.Joi
 
 const next = () => Promise.resolve(true)
