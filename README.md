@@ -5,6 +5,12 @@
 
 Koa middleware to validate input using [Joi][joi].
 
+## Installing
+
+```
+npm i -S koa-joi-schema
+```
+
 ## Usage
 
 See [test.js](test.js) for more examples.
