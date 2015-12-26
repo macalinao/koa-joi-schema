@@ -7,11 +7,7 @@ module.exports = path => schema => (ctx, next) => {
   const value = get(ctx, path)
   return promisify(Joi.validate)(value, schema)
     .then((result) => next())
-    .catch(handleError(ctx))
-}
-
-const handleError = ctx => err => {
-  ctx.joiError = err
+    .catch((err) => { throw err })
 }
 
 module.exports.Joi = Joi

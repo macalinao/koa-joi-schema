@@ -46,10 +46,13 @@ describe('koa-joi-schema', () => {
       name: Joi.string().required()
     }))
 
-    yield validator(ctx, next)
-    expect(ctx.joiError.name).to.equal('ValidationError')
-    expect(ctx.joiError.details.length).to.equal(1)
-    expect(ctx.joiError.details[0].path).to.equal('name')
+    try {
+      yield validator(ctx, next)
+    } catch (e) {
+      expect(e.name).to.equal('ValidationError')
+      expect(e.details.length).to.equal(1)
+      expect(e.details[0].path).to.equal('name')
+    }
   }))
 
 })
