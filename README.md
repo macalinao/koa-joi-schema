@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/simplyianm/koa-joi-schema.svg)](https://travis-ci.org/simplyianm/koa-joi-schema)
 
-Koa middleware to validate input/output using [Joi][joi].
+Koa middleware to validate input using [Joi][joi].
 
 ## Usage
 
