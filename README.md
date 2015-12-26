@@ -18,8 +18,10 @@ const validator = validate('body')(Joi.object().keys({
 
 const errorHandler = (ctx, next) => {
   if (ctx.joiError) { // Joi error object
+    ctx.status = 400 // invalid input
     ctx.body = {
-      error: 'Invalid input'
+      error: 'Invalid input',
+      reason: ctx.joiError
     }
     return
   }
