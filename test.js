@@ -22,6 +22,23 @@ describe('koa-joi-schema', () => {
     })
   })
 
+  it('should validate nested input', () => {
+    const ctx = {
+      request: {
+        body: {
+          name: 'Test'
+        }
+      }
+    }
+    const validator = validate('request.body')(Joi.object().keys({
+      name: Joi.string()
+    }))
+    return co(function *() {
+      yield validator(ctx, next)
+      expect(ctx.joiError).to.be.undefined
+    })
+  })
+
   it('should error on input not matching the schema', () => {
     const ctx = {
       body: {
