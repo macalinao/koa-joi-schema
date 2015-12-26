@@ -6,7 +6,7 @@ Koa middleware to validate input/output using [Joi][joi].
 
 ## Usage
 
-See [test.js] for more examples.
+See [test.js](test.js) for more examples.
 
 ```javascript
 const validate = require('koa-joi-schema')
