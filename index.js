@@ -5,6 +5,7 @@ const Joi = require('joi')
 
 module.exports = path => schema => (ctx, next) => {
   const value = get(ctx, path)
+  if (typeof value === 'undefined') throw new Error(`Path ${path} is undefined for context.`)
   return promisify(Joi.validate)(value, schema)
     .then((result) => next())
     .catch((err) => { throw JoiError(err) })

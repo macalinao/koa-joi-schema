@@ -35,6 +35,18 @@ describe('koa-joi-schema', () => {
     yield validator(ctx, next)
   }))
 
+  it('should error if path is missing', co.wrap(function *() {
+    const ctx = {}
+    const validator = validate('request.body')(Joi.object().keys({
+      name: Joi.string()
+    }))
+    try {
+      yield validator(ctx, next)
+    } catch (e) {
+      expect(e.message).to.equal('Path request.body is undefined for context.')
+    }
+  }))
+
   it('should error on input not matching the schema', co.wrap(function *() {
     const ctx = {
       body: {
