@@ -1,7 +1,6 @@
 # koa-joi-schema
 
 [![npm version](https://badge.fury.io/js/koa-joi-schema.svg)](https://badge.fury.io/js/koa-joi-schema)
-
 [![Build Status](https://travis-ci.org/simplyianm/koa-joi-schema.svg)](https://travis-ci.org/simplyianm/koa-joi-schema)
 
 Koa middleware to validate input using [Joi][joi].
