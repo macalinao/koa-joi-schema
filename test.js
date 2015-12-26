@@ -22,7 +22,7 @@ describe('koa-joi-schema', () => {
     })
   })
 
-  it('should validate nested input', () => {
+  it('should validate nested input', co.wrap(function *() {
     const ctx = {
       request: {
         body: {
@@ -33,13 +33,10 @@ describe('koa-joi-schema', () => {
     const validator = validate('request.body')(Joi.object().keys({
       name: Joi.string()
     }))
-    return co(function *() {
-      yield validator(ctx, next)
-      expect(ctx.joiError).to.be.undefined
-    })
-  })
+    yield validator(ctx, next)
+  }))
 
-  it('should error on input not matching the schema', () => {
+  it('should error on input not matching the schema', co.wrap(function *() {
     const ctx = {
       body: {
         password: 'boracay waling waling'
@@ -48,12 +45,11 @@ describe('koa-joi-schema', () => {
     const validator = validate('body')(Joi.object().keys({
       name: Joi.string().required()
     }))
-    return co(function *() {
-      yield validator(ctx, next)
-      expect(ctx.joiError.name).to.equal('ValidationError')
-      expect(ctx.joiError.details.length).to.equal(1)
-      expect(ctx.joiError.details[0].path).to.equal('name')
-    })
-  })
+
+    yield validator(ctx, next)
+    expect(ctx.joiError.name).to.equal('ValidationError')
+    expect(ctx.joiError.details.length).to.equal(1)
+    expect(ctx.joiError.details[0].path).to.equal('name')
+  }))
 
 })
