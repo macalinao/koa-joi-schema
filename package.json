@@ -24,6 +24,7 @@
   "homepage": "https://github.com/simplyianm/koa-joi-schema#readme",
   "devDependencies": {
     "chai": "^3.4.1",
+    "co-mocha": "^1.1.2",
     "mocha": "^2.3.4"
   },
   "dependencies": {

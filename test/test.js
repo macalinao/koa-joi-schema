@@ -21,7 +21,7 @@ describe('koa-joi-schema', () => {
     })
   })
 
-  it('should validate nested input', co.wrap(function *() {
+  it('should validate nested input', function *() {
     const ctx = {
       request: {
         body: {
@@ -33,9 +33,9 @@ describe('koa-joi-schema', () => {
       name: Joi.string()
     }))
     yield validator(ctx, next)
-  }))
+  })
 
-  it('should error if path is missing', co.wrap(function *() {
+  it('should error if path is missing', function *() {
     const ctx = {}
     const validator = validate('request.body')(Joi.object().keys({
       name: Joi.string()
@@ -45,9 +45,9 @@ describe('koa-joi-schema', () => {
     } catch (e) {
       expect(e.message).to.equal('Path request.body is undefined for context.')
     }
-  }))
+  })
 
-  it('should error on input not matching the schema', co.wrap(function *() {
+  it('should error on input not matching the schema', function *() {
     const ctx = {
       body: {
         password: 'boracay waling waling'
@@ -64,6 +64,6 @@ describe('koa-joi-schema', () => {
       expect(e.details.length).to.equal(1)
       expect(e.details[0].path).to.equal('name')
     }
-  }))
+  })
 
 })
