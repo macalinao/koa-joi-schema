@@ -23,7 +23,7 @@ const Joi = validate.Joi // prevent version mismatch
 // Use dot notation to validate anything on the context.
 const validator = validate('request.body')(Joi.object().keys({
   username: Joi.string().email().required(),
-  password: Joi.string()..regex(/^[a-zA-Z0-9]{3,30}$/).required()
+  password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required()
 }))
 
 const validationErrorHandler = (ctx, next) => {
