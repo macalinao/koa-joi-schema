@@ -8,8 +8,10 @@ Koa middleware to validate input using [Joi][joi].
 ## Installing
 
 ```
-npm i -S koa-joi-schema
+npm i -S koa-joi-schema joi
 ```
+
+Note: Joi is a peer dependency, so it must be installed independently.
 
 ## Usage
 
@@ -17,7 +19,7 @@ See [test.js](test.js) for more examples.
 
 ```javascript
 const validate = require('koa-joi-schema')
-const Joi = validate.Joi // prevent version mismatch
+const Joi = require('joi')
 
 // Creates a validator for 'ctx.request.body'.
 // Use dot notation to validate anything on the context.
