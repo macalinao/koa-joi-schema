@@ -30,7 +30,7 @@ const validationErrorHandler = (ctx, next) => {
   try {
     yield next()
   } catch (e) {
-    if (e.name !== 'JoiValidationError') throw e
+    if (!e.isJoi) throw e
     ctx.status = 400 // invalid input
     ctx.body = {
       error: 'Invalid input',
