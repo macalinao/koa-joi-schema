@@ -10,5 +10,3 @@ module.exports = path => schema => (ctx, next) => {
     .catch((err) => { throw err })
     .then((result) => next())
 }
-
-module.exports.Joi = Joi
