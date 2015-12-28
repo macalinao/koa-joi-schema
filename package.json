@@ -22,15 +22,18 @@
     "url": "https://github.com/simplyianm/koa-joi-schema/issues"
   },
   "homepage": "https://github.com/simplyianm/koa-joi-schema#readme",
+  "peerDependencies": {
+    "joi": "*"
+  },
   "devDependencies": {
     "chai": "^3.4.1",
     "co-mocha": "^1.1.2",
-    "mocha": "^2.3.4"
+    "mocha": "^2.3.4",
+    "joi": "^7.1.0"
   },
   "dependencies": {
     "co": "^4.6.0",
     "es6-promisify": "^3.0.0",
-    "get-value": "^2.0.2",
-    "joi": "^7.0.1"
+    "get-value": "^2.0.2"
   }
 }
