@@ -15,7 +15,7 @@ Note: Joi is a peer dependency, so it must be installed independently.
 
 ## Usage
 
-See [test.js](test.js) for more examples.
+See [test.js](test/test.js) for more examples.
 
 ```javascript
 const validate = require('koa-joi-schema')
