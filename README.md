@@ -18,6 +18,7 @@ Note: Joi is a peer dependency, so it must be installed independently.
 See [test.js](test/test.js) for more examples.
 
 ```javascript
+const co = require('co')  // Koa 2 no longer auto-wraps with co
 const validate = require('koa-joi-schema')
 const Joi = require('joi')
 
@@ -28,7 +29,7 @@ const validator = validate('request.body')(Joi.object().keys({
   password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required()
 }))
 
-const validationErrorHandler = (ctx, next) => {
+const validationErrorHandler = co.wrap(function* (ctx, next) {
   try {
     yield next()
   } catch (e) {
@@ -39,7 +40,7 @@ const validationErrorHandler = (ctx, next) => {
       reason: e
     }
   }
-}
+})
 
 router.post('/users', bodyParser, validationErrorHandler, validator, usersCtrl.create)
 ```
